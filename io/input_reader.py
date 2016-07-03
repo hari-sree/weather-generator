@@ -6,6 +6,7 @@ from datetime import date
 DEFAULT_CITY = 'SYD'
 DEFAULT_DAYS_COUNT = 10
 DEFAULT_START_DATE = date.today()
+DATA_DIRECTORY = 'data'
 
 class Input:
 	def __init__(self,sequence_count, city_data, start_date):
@@ -30,7 +31,8 @@ class InputReader:
 		return int(sys.argv[1]) if(len(sys.argv) > 1) else DEFAULT_DAYS_COUNT
 
 	def construct_data_file_name(self, city):
-		return city.get_code()+'.csv'
+		file_name = city.get_code()+'.csv'
+		return os.path.join(DATA_DIRECTORY, file_name)
 
 	def load(self):
 		cities = self.load_input_cities()
