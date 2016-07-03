@@ -28,15 +28,22 @@ Language : Python 2.7
 	* Better modelling of temperature by including more physical parameters
 	* Including topographical features of the place into the model explicitly
 
+* V. Notes
+	* Data from 5 cities are included 
+	* test_input file contains the city names for which weather has to be generated. If the corresponding city's previous year weather data is missing, Sydneys (SYD) data file will be used for parameter estimation
 
 Instructions to run :
 
 	 i) Run tests
-		pip install requirements-test.txt
-		py.test
+		pip install -r requirements-test.txt
+		py.test 'tests'
 	ii) Run program 
-		pip install requirements.txt
+		pip install -r requirements.txt
 		python GenerateWeather.py
+		        or
+		python GenerateWeather.py |sequence_length|
+		
+		* Note : Default Sequence length is 10
 
 * Output format :
   City_Code|Coordinates|Date|Temperature|Humidity
