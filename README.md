@@ -39,4 +39,4 @@ Instructions to run :
 		python GenerateWeather.py
 
 * Output format :
-##### City_Code|Coordinates|Date|Temperature|Humidity
+  City_Code|Coordinates|Date|Temperature|Humidity
