@@ -17,9 +17,17 @@ Language : Python 2.7
 	* Pressure inversely proportional to Elevation 
 
 * III. Model details / approach taken :
-	* A two state Markov chain for modelling the time evolution of weather .
-	* Once the weather type is sampled from the markov chain , temperature is generated from a normal distribution with mean & standard deviation calculated from the previous year data (Temperature assumed to be normally distributed , which is a simplifying assumption)
-	* Humidity is inversely proportional to Temperature (See II) .This is modeled using a linear model whose parameters are calculated from previous year data using linear regression 
+	* Weather evolves over time. The kind of weather on day n has a dependency on the weather on day n-1. For eg: if it rains today, there is a higher probability of having rain tomorrow as well than tomorrow being very hot. This weather evolution over time is captured using a two state Markov chain, with sensible transition probabilities (Rainy day -> Sunny day for eg.) .
+
+	* Once the weather type is sampled from the markov chain , temperature is generated from a normal distribution with mean & standard deviation calculated from the previous year data (Temperature here is assumed to be normally distributed given a weather type , which is a simplifying assumption)
+	* Humidity is then derived from Temperature using the fact that humidity is inversely proportional to Temperature (See II) .This is modeled using a linear model whose parameters are calculated from previous year data using linear regression . The two parameters of the model are slope & the intercept , which define a "y = m*x +c" linear relation. scipy is used for the parameter estimation.
+
+* III. Code/Folder structure
+	* models : has classes which abstracts the mathematical models used like MarkovChain , LinearModel etc 
+	* domain : the domain classes like WeatherRecord , City etc
+	* io     : all classes which deals with reading the input , parsing the data files used for parameter estimation
+	* tests  : unit tests
+	* data   : all the data files for each city in a IATACODE.csv format
 
 * IV. Further Improvements :
 	* Estimating Markov chain transition probabilities from data	
