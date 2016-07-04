@@ -22,21 +22,21 @@ Language : Python 2.7
 	* Once the weather type is sampled from the markov chain , temperature is generated from a normal distribution with mean & standard deviation calculated from the previous year data (Temperature here is assumed to be normally distributed given a weather type , which is a simplifying assumption)
 	* Humidity is then derived from Temperature using the fact that humidity is inversely proportional to Temperature (See II) .This is modeled using a linear model whose parameters are calculated from previous year data using linear regression . The two parameters of the model are slope & the intercept , which define a "y = m*x +c" linear relation. scipy is used for the parameter estimation.
 
-* III. Code/Folder structure
+* IV. Code/Folder structure
 	* models : has classes which abstracts the mathematical models used like MarkovChain , LinearModel etc 
 	* domain : the domain classes like WeatherRecord , City etc
 	* io     : all classes which deals with reading the input , parsing the data files used for parameter estimation
 	* tests  : unit tests
 	* data   : all the data files for each city in a IATACODE.csv format
 
-* IV. Further Improvements :
+* V. Further Improvements :
 	* Estimating Markov chain transition probabilities from data	
 	* Add more states to the chain like Cloudy / Snowy etc
 	* Use of time series models like Moving Average/autoregressive models(ARIMA) for better modelling of weather variables
 	* Better modelling of temperature by including more physical parameters
 	* Including topographical features of the place into the model explicitly
 
-* V. Notes
+* VI. Notes
 	* Data from 5 cities are included 
 	* test_input file contains the city names for which weather has to be generated. If the corresponding city's previous year weather data is missing, Sydneys (SYD) data file will be used for parameter estimation
 
